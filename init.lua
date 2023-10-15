@@ -150,13 +150,31 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+  { "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    config = function ()
+      require("catppuccin").setup({
+        integrations = {
+          neotree = true,
+          mason = true,
+          indent_blankline = {
+            enabled = true,
+            scope_color = "lavender",
+            colored_indent_levels = false
+          },
+        }
+      })
+      vim.cmd.colorscheme "catppuccin"
+    end
   },
 
   {
@@ -166,7 +184,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
@@ -227,12 +245,15 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+
+-- Neotree mappings
+vim.keymap.set('n', '<C-n>', ':Neotree<CR>')
 
 -- Set highlight on search
 vim.o.hlsearch = false
