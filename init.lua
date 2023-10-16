@@ -43,6 +43,9 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Toggle relative numbers
+vim.wo.relativenumber = true
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -66,6 +69,8 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
+  -- Vim Tmux Navigator
+  'christoomey/vim-tmux-navigator',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -92,6 +97,8 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+  -- Astro plugin
+  { 'wuelnerdotexe/vim-astro' },
 
   {
     -- Autocompletion
@@ -223,6 +230,8 @@ require('lazy').setup({
       },
     },
   },
+  -- Harpoon
+  'ThePrimeagen/harpoon',
 
   {
     -- Highlight, edit, and navigate code
@@ -347,6 +356,11 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+
+vim.keymap.set('n', '<leader>sm', ':Telescope harpoon marks<CR>', { desc = 'Harpoon [M]arks' })
+
+vim.api.nvim_set_keymap('n', '<leader>m', ":lua require('harpoon.mark').add_file()<CR>", {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>ht', ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {noremap=true})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
