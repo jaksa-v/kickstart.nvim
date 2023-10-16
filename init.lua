@@ -71,13 +71,18 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   -- Vim Tmux Navigator
   'christoomey/vim-tmux-navigator',
-  
+
   -- Undo Tree
   'mbbill/undotree',
 
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+
+  -- DB plugins
+  'tpope/vim-dadbod',
+  'kristijanhusak/vim-dadbod-ui',
+  'kristijanhusak/vim-dadbod-completion',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
