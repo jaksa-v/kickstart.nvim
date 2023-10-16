@@ -71,6 +71,9 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   -- Vim Tmux Navigator
   'christoomey/vim-tmux-navigator',
+  
+  -- Undo Tree
+  'mbbill/undotree',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -263,6 +266,9 @@ require('lazy').setup({
 
 -- Neotree mappings
 vim.keymap.set('n', '<C-n>', ':Neotree<CR>')
+
+-- Undo Tree mappings
+vim.keymap.set('n', '<C-\\>', ':UndotreeToggle<CR>:UndotreeFocus<CR>')
 
 -- Set highlight on search
 vim.o.hlsearch = false
